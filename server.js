@@ -9,7 +9,7 @@ app.use(express.json());
 
 app.use("/api", usersRoutes);
 
-const PORT = process.env.PORT || 4000;
+const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
 });
