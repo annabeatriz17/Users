@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const UserList = require("../models/UserList");
+
 const lista = new UserList();
 
 lista.addUser(new User("João Silva", "joao@example.com", 30));
