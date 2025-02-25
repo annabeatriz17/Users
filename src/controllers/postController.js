@@ -10,15 +10,22 @@ lista.addPost(new Post("https://br.web.img3.acsta.net/img/7e/31/7e31d6246c6f32fb
 
 const router = {
     getAllPosts: (req, res) => {
-        res.json(lista.getAllPosts());
-    },
-    getPostById: (req, res) => {
         try {
-            res.json(lista.getPostById(req.params.id));
+            const posts = lista.getAllPosts();
+            res.status(200).json(posts);
         } catch (error) {
             res.status(404).json({ message: "Post não encontrado", error });
         }
     },
+    getPostById: (req, res) => {
+        try {
+            const post = lista.getPostById(req.params.id);
+            res.status(200).json(post);
+        } catch (error) {
+            res.status(404).json({ message: "Post não encontrado", error });
+        }
+    },
+
     addPost: (req, res) => {
         try {
             const { likes, comments, conteudo, image, date } = req.body;
@@ -41,15 +48,19 @@ const router = {
     },
     updatePost: (req, res) => {
         try {
-            res.json(lista.updatePost(req.params.id, req.body));
+            const updatePost = lista.updatePost(req.params.id, req.body);
+            res.status(200).json(updatePost);
+            } catch (error) {
+                res.status(404).json({ message: "Erro ao atualizar o post", error });
+            }
+        },
+    deletePost: (req, res) => {
+        try {
+            lista.deletePost(req.params.id);
+            res.status(200).json({message: "post deletado com sucesso", IdDeletado: req.params.id});
         } catch (error) {
-            res.status(404).json({ message: "Erro ao atualizar o post", error });
+            res.status(404).json({message: "erro ao deletar post :(", error});
         }
     },
-    deletePost: (req, res) => {
-        lista.deletePost(req.params.id);
-        res.status(200).json({ message: "Post deletado com sucesso", IdDeletado: req.params.id });
-    }
 };
-
 module.exports = router;
