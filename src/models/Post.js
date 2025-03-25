@@ -1,7 +1,7 @@
 const { v4: uuid4 } = require('uuid');
 
 class Post {
-    constructor(likes, comments, conteudo, image, date) {
+    constructor(likes, comments, content, image, date) {
         this.id = uuid4();
         this.image = image;
         this.content = content;

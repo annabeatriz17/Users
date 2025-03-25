@@ -3,7 +3,7 @@ class PostList {
         this.posts = [];
     }
     
-    addUser(post) {
+    addPost(post) {
         this.posts.push(post);
     }
 
