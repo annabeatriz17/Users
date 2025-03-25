@@ -32,7 +32,7 @@ const router = {
                 throw new Error("Todos os campos são obrigatórios");
             }
             const newPost = new Post(likes, comments, content, image, date);
-            list.addUser(newPost);
+            list.addPost(newPost);
             res.status(201).json(newPost);
         } catch (error) {
             res.status(400).json({ message: error.message, error });
